@@ -162,13 +162,7 @@
                         })
 							                  /*  Tag Json타입 데이터 받아오기 */
                                 .done(function (response) {
-				var Hashtag = "#9cam, #";
-			for (i = 0; i < response['tags'].length; i++)
-				if (i == response['tags'].length-1) {
-					document.getElementById('tags').innerHTML += response['tags'][i].name;}
-				else {
-					document.getElementById('tags').innerHTML = Hashtag += response['tags'][i].name += ", #";}
-
+				
                                 })
                                 /* */
                                 .fail(function (response) {
