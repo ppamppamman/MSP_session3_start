@@ -8,6 +8,8 @@
     <meta property="og:image" content=""/>
     <link rel="stylesheet" type="text/css" href="demo.css">
     <title>Cognitive API - Tag image web app </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -18,7 +20,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <!--jquery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body style="background-color: #add8e6;">
 <div class="container">
@@ -68,7 +69,7 @@
     var upload = document.getElementById('input');
     var img = new Image();
     var filename = null;
-    var fullPathName = "https://730c7a36-0ee0-4-231-b9ee.azurewebsites.net/";
+    var fullPathName = "http://730c7a36-0ee0-4-231-b9ee.azurewebsites.net/";
     var form = document.getElementById('form');
     var emotion = {
         0: "anger",
@@ -139,12 +140,6 @@
                 type: 'POST'
             })
                     .done(function () {
-                        $.ajax({
-                            type: "POST",
-                            data: "{" +
-                            "\"url\":\"" + imgPath + "\"}"
-                        })
-
                         var params = {
                             "visualFeatures": "Tags",
                             "language": "en"
@@ -162,7 +157,7 @@
                         })
 							                  /*  Tag Json타입 데이터 받아오기 */
                                 .done(function (response) {
-				
+				                    
                                 })
                                 /* */
                                 .fail(function (response) {
