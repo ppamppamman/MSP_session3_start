@@ -46,58 +46,13 @@
     <div class="col-xs-12 col-md-12">
         <p id="tags"></p>
     </div>
-<!--페이스북 기능 시작-->
+<!--페이스북 기능 sciprt-->
+<!-- -->
 <div class="col-xs-12 col-md-12">
     <div id="fb-root"></div>
-<script>
-    function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
 
-        if (response.status === 'connected') {
-            testAPI();
-        } else if (response.status === 'not_authorized') {
-            document.getElementById('status').innerHTML = 'Please log ' +
-                    'into this app.';
-        } else {
-            document.getElementById('status').innerHTML = 'Please log ' +
-                    'into Facebook.';
-        }
-    }
-
-    window.fbAsyncInit = function () {
-        FB.init({
-            appId: '587945328057134',
-            cookie: true,
-            xfbml: true,
-            version: 'v2.8'
-        });
-
-        FB.getLoginStatus(function (response) {
-            statusChangeCallback(response);
-        });
-    };
-
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    function testAPI() {
-        console.log('Welcome! Fetching your information.... ');
-        FB.api('/me', function (response) {
-            console.log('Successful login for: ' + response.name);
-            document.getElementById('status').innerHTML =
-                    'Thanks for logging in, ' + response.name + '!';
-        });
-    }
-</script>
 <!--페이스북 기능 버튼-->
-<button id="shareBtn">공유하기</button>
+<!-- -->
 </div>
 
 <div class="col-xs-12 col-md-12">
@@ -189,7 +144,7 @@
                             data: "{" +
                             "\"url\":\"" + imgPath + "\"}"
                         })
-                                
+
                         var params = {
                             "visualFeatures": "Tags",
                             "language": "en"
@@ -199,7 +154,7 @@
                             url: "https://api.projectoxford.ai/vision/v1.0/analyze?" + $.param(params),
                             beforeSend: function (xhrObj) {
                                 xhrObj.setRequestHeader("Content-Type", "application/json");
-                                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "bca72475d52c4906b7eb422ab7ac1788");
+                                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", "");
                             },
                             type: "POST",
                             data: "{" +
@@ -207,14 +162,8 @@
                         })
 							                  /*  Tag Json타입 데이터 받아오기 */
                                 .done(function (response) {
-                                    var Hashtag = "#9cam, #";
-                                    for (i = 0; i < response['tags'].length; i++)
-                                        if (i == response['tags'].length-1) {
-                                        document.getElementById('tags').innerHTML += response['tags'][i].name;}
-                                        else{
-                                        document.getElementById('tags').innerHTML = Hashtag += response['tags'][i].name += ", #";
-                                        }
                                 })
+                                /* */
                                 .fail(function (response) {
                                     alert(JSON.stringify(response));
                                 });
@@ -223,15 +172,7 @@
     };
 </script>
 </div>
-<!-- shareBtn script -->
-<script>
-     document.getElementById('shareBtn').onclick = function () {
-     FB.ui({
-     method: 'feed',
-     link: 'https://730c7a36-0ee0-4-231-b9ee.azurewebsites.net/',
-     picture: imgPath
-     })
-         }
-</script>
+<!-- fb.ui document id shareBtn script -->
+<!-- -->
 </body>
 </html>
